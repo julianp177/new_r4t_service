@@ -1,0 +1,47 @@
+
+spring:
+  profiles:
+    active: localdev
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none # JPA legt nicht automatisch Tabellen an.
+      dialect: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100
+        search:
+          default:
+            directory_provider: ram
+---
+spring:
+  profiles:
+    active: localdev
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
+
+---
+spring:
+  profiles:
+    active: xxampp
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
